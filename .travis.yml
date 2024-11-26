@@ -1,0 +1,28 @@
+language: go
+os: linux
+go_import_path: github.com/ethereum/go-ethereum
+jobs:
+  include:
+    - stage: build
+      if: type = push
+      os: linux
+      go: 1.22.1
+      arch: arm64
+      dist: xenial
+      git:
+        submodules: false # avoid cloning ethereum/tests
+      script:
+        - ls -la /Users/travis/gopath/bin/
+        - go version
+
+    - stage: build
+      if: type = push
+      os: linux
+      go: 1.21.1
+      arch: arm64
+      dist: xenial
+      git:
+        submodules: false # avoid cloning ethereum/tests
+      script:
+        - ls -la /Users/travis/gopath/bin/
+        - go version
